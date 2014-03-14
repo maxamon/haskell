@@ -17,7 +17,7 @@ toJSO :: [(String, JSValue)] -> JSValue
 toJSO = JSObject . toJSObject
 
 instance JSON DataValues where
-    showJSON (CoordValues xv yv h w) = toJSO [("xValue", showJSON xv)]
+    showJSON (CoordValues xv) = toJSO [("xValue", showJSON xv)]
     showJSON (ObjectValues s)  = toJSO [("idValue",  showJSON s)]
     readJSON (JSObject obj)    = case o of
       [("xValue", JSRational _ xv)] -> Ok CoordValues {xValue = floor xv}
